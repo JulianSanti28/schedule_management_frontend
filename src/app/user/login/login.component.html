@@ -1,0 +1,30 @@
+
+
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <!-- Tabs Titles -->
+	  <h2 class="active"> Sign In </h2>  
+	  <!-- Icon -->
+	  <div class="fadeIn first">
+		<img src="assets/img/Profile.png" id="icon" alt="User Icon" />
+	  </div>
+  
+	  <!-- Login Form -->
+	  <form form [formGroup]="createForm" (ngSubmit)="validarUsuario()" >
+		<input formControlName="username"  [(ngModel)] = "user.username" type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
+		<div class="alert alert-danger" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+			<div class="container-error-message">
+				Nombre de usuario no válido
+			</div>
+		</div>
+		<input formControlName="password"  [(ngModel)] = "user.password" type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
+		<div class="alert alert-danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+			<div class="container-error-message">
+			   Contraseña no válida
+			</div>
+		</div>
+		<input type="submit" class="fadeIn fourth" value="Log In">
+	  </form>
+
+	</div>
+  </div>	

@@ -1,0 +1,72 @@
+
+
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <h2 class="active"> Asignar </h2>  
+	  <form form [formGroup]="createForm" (ngSubmit)="guardarFranja()" >
+        <!--Día asignado-->
+        <label for="horaInicio">Día asignado:</label>
+        <select formControlName="dia">
+            <option value="lunes">Lunes</option>
+            <option value="martes">Martes</option>
+            <option value="miercoles">Miércoles</option>
+            <option value="jueves">Jueves</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sábado</option>
+        </select>
+        
+        <!--Hora Inicio-->
+        <label for="horaInicio">Hora Inicio:</label>
+		<input formControlName="horaInicio" [(ngModel)] = "franja.horaInicio" type="time" id="horaInicio" class="fadeIn second" name="horaInicio">
+		<div class="alert alert-danger" *ngIf="horaInicio?.invalid && (horaInicio?.dirty || horaInicio?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="horaInicio?.valid && (horaInicio?.dirty || horaInicio?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+        <!--Hora Final-->
+        <label for="horaInicio">Hora Fin:</label>	
+        <input formControlName="horaFinal" [(ngModel)] = "franja.horaFin" type="time" id="horaFin" class="fadeIn second" name="horaFin">
+		<div class="alert alert-danger" *ngIf="horaFinal?.invalid && (horaFinal?.dirty || horaFinal?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="horaFinal?.valid && (horaFinal?.dirty || horaFinal?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+
+		<!--Periodo académico-->
+		<label for="periodoAcademico">Periodo Académico:</label>
+		<select formControlName="periodoAcademico" [(ngModel)] = "franja.paId" >
+			<option *ngFor="let periodo of periodos" [value]="periodo.id">{{periodo.nombre}}</option>
+		</select>
+		<!--Ambientes académico-->
+		<label for="ambienteAcademico">Ambiente Académico:</label>
+		<select formControlName="ambienteAcademico" [(ngModel)] = "franja.ambienteCod">
+			<option *ngFor="let ambiente of ambientes" [value]="ambiente.codigo">{{ambiente.nombre}}, modalidad: {{ambiente.tipoAmbiente}}</option>
+		</select>
+		<!--Docentes académico-->
+		<label for="ambienteAcademico">Docentes:</label>
+		<select formControlName="docenteAcademico" [(ngModel)] = "franja.idDocente">
+			<option *ngFor="let docente of docentes" [value]="docente.id">{{docente.id}}</option>
+		</select>
+		<!--Competencias académico-->
+		<label for="ambienteAcademico">Competencia:</label>
+		<select formControlName="competenciaAcademico" [(ngModel)] = "franja.codigoCompetencia">
+			<option *ngFor="let competencia of competencias" [value]="competencia.codigo">{{competencia.nombreComp}}</option>
+		</select>
+		<input type="submit" class="fadeIn fourth" value="Add">
+	  </form>
+	</div>
+  </div>	
+
+
+
+  

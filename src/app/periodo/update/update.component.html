@@ -1,0 +1,56 @@
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>¡Agregar Periodo Académico!</h3>
+        </div>
+        <div class="card-body">
+            <form  [formGroup]="createForm" (ngSubmit)="guardarPeriodo()">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre" [(ngModel)] = "periodo.nombre" placeholder="Nombre"name="nombre" placeholder="Digite nombre" required>
+                    <div class="alert alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+                        <div class="container-error-message">
+                            Incorrect!
+                        </div>
+                    </div>
+                    <div class="alert alert-success" *ngIf="nombre?.valid && (nombre?.dirty || nombre?.touched)">
+                        <div class="container-error-success">
+                            Correct!
+                        </div>
+                    </div>
+                    <label for="fechaInicio">Fecha Inicial:</label>
+                    <input type="date" class=" form-control" formControlName="fechaInicio" [(ngModel)] = "periodo.fechaInicio"  name="fechaInicio" (change)="validarRangoFechas()" required>
+                    <div class="alert alert-danger" *ngIf="fechaInicio?.invalid && (fechaInicio?.dirty || fechaInicio?.touched)">
+                        <div class="container-error-message" >
+                            Incorrect!
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="fechaInicio?.valid && !esCorrectaFecha">
+                        <div class="container-error-message" >
+                            Incorrect range!
+                        </div>
+                    </div>
+                    <div class="alert alert-success" *ngIf="fechaInicio?.valid && esCorrectaFecha && (fechaInicio?.dirty || fechaInicio?.touched)">
+                        <div class="container-success-message">
+                            Correct!
+                        </div>
+                    </div>
+                    <label for="fechaFin">Fecha Final:</label>
+                    <input type="date" class="form-control" formControlName="fechaFin"  [(ngModel)] = "periodo.fechaFin" (change)="validarRangoFechas()" name="fechaFin"required>
+                    <div class="alert alert-danger" *ngIf="fechaFin?.invalid && (fechaFin?.dirty || fechaFin?.touched)">
+                        <div class="container-error-message">
+                            Incorrect!   
+                        </div>
+                    </div>
+                    <div class="alert alert-success" *ngIf="fechaFin?.valid && (fechaFin?.dirty || fechaFin?.touched)">
+                        <div class="container-success-message">
+                            Correct!
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type = "submit" class="btn btn-info">Registrar</button> 
+            </form>
+        </div>
+    </div>
+</div>

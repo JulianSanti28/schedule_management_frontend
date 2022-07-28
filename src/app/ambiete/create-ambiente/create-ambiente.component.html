@@ -1,0 +1,68 @@
+
+
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <h2 class="active"> Ambiente </h2>  
+	  <!-- Login Form -->
+	  <form form [formGroup]="createForm" (ngSubmit)="guardarAmbiente()" >
+		<input formControlName="id" [(ngModel)] = "ambienteObj.codigo" type="text" id="id" class="fadeIn second" name="id" placeholder="Código">
+		<div class="alert alert-danger" *ngIf="id?.invalid && (id?.dirty || id?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="id?.valid && (id?.dirty || id?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+		<input formControlName="nombre" [(ngModel)] = "ambienteObj.nombre" type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
+		<div class="alert alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="nombre?.valid && (nombre?.dirty || nombre?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+		<input formControlName="capacidad"  [(ngModel)] = "ambienteObj.capacidad" type="number" id="capacidad" class="fadeIn third" name="capacidad" placeholder="Cantidad">
+		<div class="alert alert-danger" *ngIf="capacidad?.invalid && (capacidad?.dirty || capacidad?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="capacidad?.valid && (capacidad?.dirty || capacidad?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+		<div>
+			<h6>Tipo</h6>
+			<select formControlName="tipoAmbiente" [(ngModel)] = "ambienteObj.tipoAmbiente" value="Seleccione" placeholder="Seleccione">
+				<option value="virtual">Virtual</option>
+				<option value="presencial">Presencial</option>
+			</select>
+		</div>
+
+		<input formControlName="ubicacion"  [(ngModel)] = "ambienteObj.ubicacion" type="text" id="ubicacion" class="fadeIn third" name="ubicacion" placeholder="Ubicación">
+		<div class="alert alert-danger" *ngIf="ubicacion?.invalid && (ubicacion?.dirty || ubicacion?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="ubicacion?.valid && (ubicacion?.dirty || ubicacion?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+		<input type="submit" class="fadeIn fourth" value="Add">
+	  </form>
+
+	</div>
+  </div>	
+
+
+
+  

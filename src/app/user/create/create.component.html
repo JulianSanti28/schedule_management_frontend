@@ -1,0 +1,44 @@
+
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>¡Registrate!</h3>
+        </div>
+        <div class="card-body">
+            <form  [formGroup]="createForm" (ngSubmit)="guardarUsuario()">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre" [(ngModel)] = "user.nombreCliente" name="nombre" placeholder="Digite nombre" required>
+                    <div class="alert alert-danger" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                        <div class="container-error-message">
+                            Nombre no válido
+                        </div>
+                    </div>
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" class=" form-control" formControlName="apellido" [(ngModel)] = "user.apellido"  name="apellido" placeholder="Digite apellido" required>
+                    <div class="alert alert-danger" *ngIf="apellido?.invalid && (apellido?.dirty || apellido?.touched)">
+                        <div class="container-error-message">
+                            Apellido no válido
+                        </div>
+                    </div>
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" formControlName="username"  [(ngModel)] = "user.username"  name="username" placeholder="Digite nombre de usuario" required>
+                    <div class="alert alert-danger" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+                        <div class="container-error-message">
+                            Nombre de usuario no válido
+                        </div>
+                    </div>
+                    <label for="contrasenia">Contraseña:</label>
+                    <input type="password" class="form-control" formControlName="password"  [(ngModel)] = "user.password"  name="contrasenia" placeholder="Digite contraseña" required> 
+                    <div class="alert alert-danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                        <div class="container-error-message">
+                           Contraseña no válida
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type = "submit" class="btn btn-info">Registrar</button> 
+            </form>
+        </div>
+    </div>
+</div>

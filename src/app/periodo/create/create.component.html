@@ -1,0 +1,54 @@
+
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <h2 class="active"> Periodo </h2>  
+	  <form form [formGroup]="createForm" (ngSubmit)="guardarPeriodo()" >
+
+		<input formControlName="nombre" [(ngModel)] = "periodo.nombre" type="text" id="id" class="fadeIn second" name="id" placeholder="Nombre">
+		<div class="alert alert-danger" *ngIf="nombre?.invalid && (nombre?.dirty || nombre?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="nombre?.valid && (nombre?.dirty || nombre?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+        
+        <label for="fechaInicio">Fecha Inicio:</label>
+		<input formControlName="fechaInicio" [(ngModel)] = "periodo.fechaInicio" type="date" id="fechaInicio" class="fadeIn second" name="fechaInicio" (change)="validarRangoFechas()">
+        <div class="alert alert-danger"  *ngIf="fechaInicio?.invalid && (fechaInicio?.dirty || fechaInicio?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+        
+        <div class="alert alert-danger" *ngIf="fechaInicio?.valid && !esCorrectaFecha">
+			<div class="container-error-message">
+				Incorrect range!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="fechaInicio?.valid && esCorrectaFecha && (fechaInicio?.dirty || fechaInicio?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+        <label for="fechaFin">Finalización:</label>
+		<input formControlName="fechaFin"  [(ngModel)] = "periodo.fechaFin" type="date" id="capacidad" class="fadeIn third" name="fechaFin" placeholder="Cantidad" (change)="validarRangoFechas()">
+		<div class="alert alert-danger" *ngIf="fechaFin?.invalid && (fechaFin?.dirty || fechaFin?.touched)">
+			<div class="container-error-message">
+				Incorrect!
+			</div>
+		</div>
+		<div class="alert alert-success" *ngIf="fechaFin?.valid && (fechaFin?.dirty || fechaFin?.touched)">
+			<div class="container-success-message">
+				Correct!
+			</div>
+		</div>
+		<input type="submit" class="fadeIn fourth" value="Add">
+	  </form>
+
+	</div>
+  </div>
+
